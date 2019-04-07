@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+int main()
+{
+    ll num_people;
+    cout<<"Enter the number of student :";
+    cin>>num_people;
+    vector<pair <ll,ll>>vect;
+    for(ll i=0;i<num_people;i++)
+    {
+        ll x;
+        cout<<"Enter the the number of gift of student "<<i+1<<" ";
+        cin>>x;
+        vect.push_back(make_pair(x,i+1));
+    }
+    cout<<endl<<endl<<"The gift will be billed in following order:\n"<<endl;
+    sort(vect.begin(),vect.end());
+    cout<<"Student             No. of Gift          Waiting Time"<<endl; 
+    ll time=0;
+    double total=0;
+    for(ll i=num_people-1;i>=0;i--)
+    {
+        time=time+vect[i].first;
+        cout<<vect[i].second<<"                    "<<vect[i].first<<"                     "<<time-vect[i].first<<endl;
+        total=total+time-vect[i].first;
+    }
+    cout<<endl<<endl<<"Average Waiting Time :"<<total/num_people;
+    return 0;
+}
